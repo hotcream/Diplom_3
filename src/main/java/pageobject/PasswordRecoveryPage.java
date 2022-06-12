@@ -8,7 +8,7 @@ import org.openqa.selenium.support.How;
 public class PasswordRecoveryPage {
 
     // Кнопка логина
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/div/p/a")
+    @FindBy(how = How.XPATH, using = "//a[text()=\"Войти\"]")
     private SelenideElement loginButtonOnPasswordRecoveryPage;
 
     @Step("Клик на кнопку логина")

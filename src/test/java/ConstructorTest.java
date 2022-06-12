@@ -36,6 +36,7 @@ public class ConstructorTest {
     @DisplayName("Переход в раздел 'Булки'")
     public void checkClickBunTest() {
         MainPage mainPage = page(MainPage.class);
+        mainPage.clickSauces();
         mainPage.clickBuns();
         mainPage.getBunsTab().shouldHave(exactText("Булки"));
     }

@@ -23,7 +23,7 @@ public class PersonalAccountPage {
     private SelenideElement exitButtonOnPersonalWebPage;
 
     // Поле с текстом "В этом разделе вы можете изменить свои персональные данные"
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/nav/p")
+    @FindBy(how = How.XPATH, using = "//p[@class=\"Account_text__fZAIn text text_type_main-default\"]")
     private SelenideElement textAboutProfile;
 
     // Кнопка "конструктор"

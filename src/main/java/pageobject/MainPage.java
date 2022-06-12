@@ -1,6 +1,5 @@
 package pageobject;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
@@ -17,36 +16,36 @@ public class MainPage {
     private SelenideElement loginButtonOnMainPage;
 
     // Кнопка оформить заказ
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/section[2]/div/button")
+    @FindBy(how = How.XPATH, using = "//button[text()=\"Оформить заказ\"]")
     private SelenideElement orderButton;
 
     // Кнопка личный кабинет
-    @FindBy(how = How.LINK_TEXT,using = "Личный Кабинет")
+    @FindBy(how = How.LINK_TEXT, using = "Личный Кабинет")
     private SelenideElement personalAccountButton;
 
-    // Кнопка начинки
-    @FindBy(xpath = "//*[text()='Начинки']")
-    private SelenideElement fillingsButton;
-
-    // Кнопка вкладки начинки
-    @FindBy(xpath = ".//*[@class='text text_type_main-medium mb-6 mt-10' and text()='Начинки']")
+    // Надпись начинки
+    @FindBy(xpath = "//div[@class=\"tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect\"]/span[text()=\"Начинки\"]")
     private SelenideElement fillingsTab;
 
-    // Кнопка соусы
-    @FindBy(xpath = "//*[text()='Соусы']")
-    private SelenideElement saucesButton;
+    // Кнопка вкладки начинки
+    @FindBy(xpath = "//span[@class=\"text text_type_main-default\" and text()=\"Начинки\"]")
+    private SelenideElement fillingsButton;
 
-    // Кнопка вкладки соусы
-    @FindBy(xpath = ".//*[@class='text text_type_main-medium mb-6 mt-10' and text()='Соусы']")
+    // Надпись соусы
+    @FindBy(xpath = "//div[@class=\"tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect\"]/span[text()=\"Соусы\"]")
     private SelenideElement saucesTab;
 
-    // Кнопка булки
-    @FindBy(xpath = ".//*[//*[@id=\"root\"]/div/main/section[1]/div[1]/div[1]/span]")
-    private SelenideElement bunsButton;
+    // Кнопка вкладки соусы
+    @FindBy(xpath = "//span[@class=\"text text_type_main-default\" and text()=\"Соусы\"]")
+    private SelenideElement saucesButton;
+
+    // Надпись булки
+    @FindBy(xpath = "//div[@class=\"tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect\"]/span[text()=\"Булки\"]")
+    private SelenideElement bunsTab;
 
     // Кнопка вкладки булки
-    @FindBy(xpath = ".//*[@class='text text_type_main-medium mb-6 mt-10' and text()='Булки']")
-    private SelenideElement bunsTab;
+    @FindBy(xpath = "//span[@class=\"text text_type_main-default\" and text()=\"Булки\"]")
+    private SelenideElement bunsButton;
 
     @Step("Клик по разделу 'Начинки'")
     public void clickFilling() {
@@ -64,17 +63,17 @@ public class MainPage {
     }
 
     @Step("Нажатие кнопки входа")
-    public void pressLoginButtonOnMainPage(){
+    public void pressLoginButtonOnMainPage() {
         loginButtonOnMainPage.click();
     }
 
     @Step("Нажатие кнопки личный кабинет")
-    public void pressPersonalAccountButton(){
+    public void pressPersonalAccountButton() {
         personalAccountButton.click();
     }
 
     @Step("Проверка появления кнопки 'создать заказ' на главной странице")
-    public SelenideElement getOrderButton(){
+    public SelenideElement getOrderButton() {
         return orderButton;
     }
 
@@ -82,7 +81,6 @@ public class MainPage {
     public SelenideElement getFillingsTab() {
         return fillingsTab;
     }
-
 
     public SelenideElement getSaucesTab() {
         return saucesTab;

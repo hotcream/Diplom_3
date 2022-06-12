@@ -19,11 +19,11 @@ public class LoginPage {
     public static String password = RandomStringUtils.randomAlphabetic(10);
 
     // Поле ввода почты
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/form/fieldset[1]/div/div/input")
+    @FindBy(how = How.XPATH, using = "//input[@class=\"text input__textfield text_type_main-default\" and @type=\"text\"]")
     private SelenideElement emailFieldOnLoginPage;
 
     // Поле ввода пароля
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/form/fieldset[2]/div/div/input")
+    @FindBy(how = How.XPATH, using = "//input[@class=\"text input__textfield text_type_main-default\" and @type=\"password\"]")
     private SelenideElement passwordFieldOnLoginPage;
 
     // Кнопка войти
@@ -35,8 +35,11 @@ public class LoginPage {
     private SelenideElement registerButtonOnLoginPage;
 
     // Кнопка восставновления пароля
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/div/p[2]/a")
+    @FindBy(how = How.XPATH, using = "//a[text()=\"Восстановить пароль\"]")
     private SelenideElement recoveryPasswordOnLoginPage;
+
+    public LoginPage() {
+    }
 
     @Step("Заполнение почты")
     public void fillEmailFieldOnLoginPage(String text) {

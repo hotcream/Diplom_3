@@ -1,6 +1,7 @@
 package pageobject;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -15,20 +16,16 @@ public class RegisterPage {
     public static String password = RandomStringUtils.randomAlphabetic(8);
     public static String shortPassword = RandomStringUtils.randomAlphabetic(5);
 
-    // Поле ввода имени
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/form/fieldset[1]/div/div/input")
-    private SelenideElement nameFieldOnRegistrationPage;
-
-    // Поле ввода почты
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/form/fieldset[2]/div/div/input")
-    private SelenideElement emailFieldOnRegistrationPage;
+    // Поля Имя и Email
+    @FindBy(how = How.XPATH, using = "//input[@class=\"text input__textfield text_type_main-default\"]")
+    private ElementsCollection nameAndEmailFields;
 
     // Поле ввода пароля
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/form/fieldset[3]/div/div/input")
+    @FindBy(how = How.XPATH, using = "//input[@class=\"text input__textfield text_type_main-default\" and @name=\"Пароль\"]")
     private SelenideElement passwordFieldOnRegistrationPage;
 
     // Поле ошибки
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/form/fieldset[3]/div/p")
+    @FindBy(how = How.XPATH, using = "//p[@class=\"input__error text_type_main-default\"]")
     private SelenideElement errorFieldOnRegistrationPage;
 
     // Кнопка зарегистрироваться
@@ -36,19 +33,19 @@ public class RegisterPage {
     private SelenideElement registerButtonOnRegistrationPage;
 
     // Кнопка логин
-    @FindBy(how = How.XPATH, using = "/html/body/div/div/main/div/div/p/a")
+    @FindBy(how = How.XPATH, using = "//a[text()=\"Войти\"]")
     private SelenideElement loginButtonOnRegistrationPage;
 
     @Step("Заполнение имени")
     public void fillNameFieldOnRegisterPage(String text) {
-        nameFieldOnRegistrationPage.shouldBe(Condition.visible);
-        nameFieldOnRegistrationPage.sendKeys(text);
+        nameAndEmailFields.get(0).shouldBe(Condition.visible);
+        nameAndEmailFields.get(0).sendKeys(text);
     }
 
     @Step("Заполнение почты")
     public void fillEmailFieldOnRegisterPage(String text) {
-        emailFieldOnRegistrationPage.shouldBe(Condition.visible);
-        emailFieldOnRegistrationPage.sendKeys(text);
+        nameAndEmailFields.get(1).shouldBe(Condition.visible);
+        nameAndEmailFields.get(1).sendKeys(text);
     }
 
     @Step("Заполнение пароля")
